@@ -1,4 +1,5 @@
 import React from "react";
+import bootstrap from "bootstrap";
 import "./styles.css";
 
 import SearchForm from "./SearchForm";

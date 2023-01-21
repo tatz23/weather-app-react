@@ -1,5 +1,6 @@
 import React from "react";
 import "./CurrentWeather.css";
+import bootstrap from "bootstrap";
 
 export default function CurrentWeather() {
   return (
