@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import bootstrap from "bootstrap";
 
 export default function Search() {
   let [city, setCity] = useState("");
@@ -30,10 +29,25 @@ export default function Search() {
   }
 
   let form = (
-    <form onSubmit={handleSubmit}>
-      <input type="search" onChange={updateCity} />
-      <button type="submit"> Submit </button>
-    </form>
+      <div className="row">
+      <div className="col-11">
+        <form id="search-form" onSubmit={handleSubmit}>
+          <input
+            type="search" onChange={updateCity}
+            placeholder="🔍Enter a city name..."
+            className="form-control"
+            id="city-input"
+          />
+        </form>
+      </div>
+      <div className="col-1">
+        <button className="current-location" id="current-location">
+          <span role="img" aria-label="emoji">
+            📍
+          </span>
+        </button>
+      </div>
+    </div>
   );
 
   if (loaded) {
