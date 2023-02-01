@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import "./CurrentWeather.css";
 
-export default function CurrentWeather (props) {
+export default function CurrentWeather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
 
@@ -105,4 +105,3 @@ export default function CurrentWeather (props) {
     return "Loading...";
   }
 }
-
