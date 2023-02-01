@@ -3,6 +3,8 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "./CurrentWeather.css";
+import LocationButton from "./LocationButton";
+import FormattedDate from "./FormattedDate";
 
 export default function CurrentWeather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -40,7 +42,8 @@ export default function CurrentWeather(props) {
   if (weatherData.ready) {
     return (
       <div>
-        <div className="SearchBar">
+        <div className ="row">
+        <div className="SearchBar col-9">
           <form id="search-form" onSubmit={handleSubmit}>
             <input
               type="search"
@@ -51,6 +54,11 @@ export default function CurrentWeather(props) {
             />
           </form>
         </div>
+        <div className="col-1">
+          <LocationButton/>
+        </div>
+        </div>
+        <hr />
         <div className="Currentweather">
           <div className="weather-app">
             <div className="row">
@@ -72,7 +80,7 @@ export default function CurrentWeather(props) {
             <div className="row">
               <div className="col-6">
                 <ul>
-                  <li id="date">{weatherData.date}</li>
+                  <li id="date"><FormattedDate date={weatherData.date.toString()}/></li>
                   <li id="weather-description">{weatherData.description}</li>
                 </ul>
               </div>

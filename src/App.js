@@ -11,16 +11,7 @@ export default function App() {
     <div className="App">
       <div className="container">
         <div className="Weather-app">
-          <div className="row">
-            <div className="col-9">
-              <SearchForm />
-            </div>
-            <div className="col-1">
-              <LocationButton />
-            </div>
-          </div>
-          <hr />
-          <CurrentWeather defaultCity="paris" />
+           <CurrentWeather defaultCity="porto" />
           <hr />
         </div>
       </div>
