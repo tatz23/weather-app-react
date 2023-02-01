@@ -20,7 +20,7 @@ export default function App() {
             </div>
           </div>
           <hr />
-          <CurrentWeather />
+          <CurrentWeather defaultCity="paris" />
           <hr />
         </div>
       </div>
