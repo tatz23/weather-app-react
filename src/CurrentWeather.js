@@ -74,9 +74,9 @@ export default function CurrentWeather(props) {
                 <div className="d-flex weather-temperature">
                   <h2 className="temperature">
                     <img id="icon" alt="Partly Cloudy" src={weatherData.icon} />
-                    <span id="current-temperature">
-                      <WeatherTemperature />
-                    </span>
+                    <div id="current-temperature">
+                      <WeatherTemperature celsius={weatherData.temperature}/>
+                    </div>
                   </h2>
                 </div>
               </div>
