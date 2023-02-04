@@ -73,10 +73,14 @@ export default function CurrentWeather(props) {
               <div className="col-6">
                 <div className="d-flex weather-temperature">
                   <h2 className="temperature">
-                    <img id="icon" alt="Partly Cloudy" src={weatherData.icon} />
-                    <div id="current-temperature">
-                      <WeatherTemperature celsius={weatherData.temperature}/>
-                    </div>
+                      <img
+                        id="icon"
+                        alt="Partly Cloudy"
+                        src={weatherData.icon} className="d-flex"
+                      />
+                    <span id="current-temperature">
+                      <WeatherTemperature celsius={weatherData.temperature} />
+                    </span>
                   </h2>
                 </div>
               </div>
@@ -87,7 +91,9 @@ export default function CurrentWeather(props) {
                   <li id="date">
                     <FormattedDate date={weatherData.date} />
                   </li>
-                  <li id="weather-description">{weatherData.description}</li>
+                  <li className="text-capitalize" id="weather-description">
+                    {weatherData.description}
+                  </li>
                 </ul>
               </div>
               <div className="col-6">

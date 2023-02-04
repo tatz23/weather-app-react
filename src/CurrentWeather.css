@@ -37,16 +37,19 @@ ul {
   list-style: none;
   text-align: left;
   padding: 0px;
+  margin-left: -30px;
 }
 .temperature {
-  margin-left: 60px;
+  margin-left: 70px;
   font-size: 40px;
 }
 
 .weather-temperature img {
-  margin-right: 10px;
+  margin-right: 50px;
   height: 64px;
   width: 64px;
+  margin-bottom: -55px;
+  margin-top: 10px;
 }
 
 .feels-like-description {
