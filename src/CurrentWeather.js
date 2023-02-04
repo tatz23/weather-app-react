@@ -4,7 +4,9 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import "./CurrentWeather.css";
 import LocationButton from "./LocationButton";
+import CelsiusButton from "./CelsiusButton";
 import FormattedDate from "./FormattedDate";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function CurrentWeather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -42,21 +44,24 @@ export default function CurrentWeather(props) {
   if (weatherData.ready) {
     return (
       <div>
-        <div className ="row">
-        <div className="SearchBar col-9">
-          <form id="search-form" onSubmit={handleSubmit}>
-            <input
-              type="search"
-              placeholder="🔍Enter a city name..."
-              className="form-control"
-              id="city-input"
-              onChange={handleCityChange}
-            />
-          </form>
-        </div>
-        <div className="col-1">
-          <LocationButton/>
-        </div>
+        <div className="row">
+          <div className="SearchBar col-9">
+            <form id="search-form" onSubmit={handleSubmit}>
+              <input
+                type="search"
+                placeholder="🔍Enter a city name..."
+                className="form-control"
+                id="city-input"
+                onChange={handleCityChange}
+              />
+            </form>
+          </div>
+          <div className="col-1">
+            <LocationButton />
+          </div>
+          <div className="col-1">
+            <CelsiusButton />
+          </div>
         </div>
         <hr />
         <div className="Currentweather">
@@ -70,9 +75,8 @@ export default function CurrentWeather(props) {
                   <h2 className="temperature">
                     <img id="icon" alt="Partly Cloudy" src={weatherData.icon} />
                     <span id="current-temperature">
-                      {Math.round(weatherData.temperature)}
+                      <WeatherTemperature />
                     </span>
-                    <span className="units">ºC</span>
                   </h2>
                 </div>
               </div>
@@ -80,7 +84,9 @@ export default function CurrentWeather(props) {
             <div className="row">
               <div className="col-6">
                 <ul>
-                  <li id="date"><FormattedDate date={weatherData.date.toString()}/></li>
+                  <li id="date">
+                    <FormattedDate date={weatherData.date} />
+                  </li>
                   <li id="weather-description">{weatherData.description}</li>
                 </ul>
               </div>
