@@ -1,4 +1,4 @@
-.current-location, .celsius-button {
+.current-location, .celsius-button, .fahrenheit-button{
   margin: 5px auto;
   display: block;
   background: transparent;
@@ -17,6 +17,12 @@
 }
 
 .celsius-button:hover {
+  background: #08a9f3;
+  color: white;
+  cursor: pointer;
+}
+
+.fahrenheit-button:hover {
   background: #08a9f3;
   color: white;
   cursor: pointer;

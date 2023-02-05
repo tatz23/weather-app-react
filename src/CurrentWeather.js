@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./CurrentWeather.css";
 import LocationButton from "./LocationButton";
 import CelsiusButton from "./CelsiusButton";
+import FahrenheitButton from "./FahrenheitButton";
 import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
 
@@ -62,6 +63,9 @@ export default function CurrentWeather(props) {
           <div className="col-1">
             <CelsiusButton />
           </div>
+          <div className="col-1">
+            <FahrenheitButton />
+          </div>
         </div>
         <hr />
         <div className="Currentweather">
@@ -73,11 +77,12 @@ export default function CurrentWeather(props) {
               <div className="col-6">
                 <div className="d-flex weather-temperature">
                   <h2 className="temperature">
-                      <img
-                        id="icon"
-                        alt="Partly Cloudy"
-                        src={weatherData.icon} className="d-flex"
-                      />
+                    <img
+                      id="icon"
+                      alt="Partly Cloudy"
+                      src={weatherData.icon}
+                      className="d-flex"
+                    />
                     <span id="current-temperature">
                       <WeatherTemperature celsius={weatherData.temperature} />
                     </span>
