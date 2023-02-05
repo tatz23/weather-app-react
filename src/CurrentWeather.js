@@ -3,8 +3,6 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "./CurrentWeather.css";
-import CelsiusButton from "./CelsiusButton";
-import FahrenheitButton from "./FahrenheitButton";
 import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
 
@@ -15,7 +13,7 @@ export default function CurrentWeather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      coordinates: response.data.coord,
+      coord: response.data.coordinates,
       temperature: response.data.temperature.current,
       feelslike: response.data.temperature.feels_like,
       humidity: response.data.temperature.humidity,
@@ -44,8 +42,8 @@ export default function CurrentWeather(props) {
 
   function searchLocation (position) {
     const apiKey = "2afbc670a6b48bo2065e3872ftab04ec";
-    const latitude = position.coordinates.latitude;
-    const longitude = position.coordinates.longitude;
+    const latitude = position.coord.latitude;
+    const longitude = position.coord.longitude;
     let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
@@ -59,7 +57,7 @@ export default function CurrentWeather(props) {
     return (
       <div>
         <div className="row">
-          <div className="SearchBar col-9">
+          <div className="SearchBar col-11">
             <form id="search-form" onSubmit={handleSubmit}>
               <input
                 type="search"
@@ -76,12 +74,6 @@ export default function CurrentWeather(props) {
                 📍
               </span>
             </button>
-          </div>
-          <div className="col-1">
-            <CelsiusButton />
-          </div>
-          <div className="col-1">
-            <FahrenheitButton />
           </div>
         </div>
         <hr />
