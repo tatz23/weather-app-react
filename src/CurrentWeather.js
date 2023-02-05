@@ -3,7 +3,6 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 
 import "./CurrentWeather.css";
-import LocationButton from "./LocationButton";
 import CelsiusButton from "./CelsiusButton";
 import FahrenheitButton from "./FahrenheitButton";
 import FormattedDate from "./FormattedDate";
@@ -16,6 +15,7 @@ export default function CurrentWeather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
+      coordinates: response.data.coord,
       temperature: response.data.temperature.current,
       feelslike: response.data.temperature.feels_like,
       humidity: response.data.temperature.humidity,
@@ -25,6 +25,12 @@ export default function CurrentWeather(props) {
       wind: response.data.wind.speed,
       city: response.data.city,
     });
+  }
+  
+  function search() {
+    let apiKey = "2afbc670a6b48bo2065e3872ftab04ec";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   function handleSubmit(event) {
@@ -36,10 +42,17 @@ export default function CurrentWeather(props) {
     setCity(event.target.value);
   }
 
-  function search() {
-    let apiKey = "2afbc670a6b48bo2065e3872ftab04ec";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  function searchLocation (position) {
+    const apiKey = "2afbc670a6b48bo2065e3872ftab04ec";
+    const latitude = position.coordinates.latitude;
+    const longitude = position.coordinates.longitude;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
+  }
+
+  function getCurrentPosition (event) {
+    event.preventDefault();
+    navigator.geolocation.getCurrentPosition(searchLocation);
   }
 
   if (weatherData.ready) {
@@ -57,8 +70,12 @@ export default function CurrentWeather(props) {
               />
             </form>
           </div>
-          <div className="col-1">
-            <LocationButton />
+          <div className="col-1 button">
+            <button className="current-location" id="current-location" onClick={getCurrentPosition}>
+              <span role="img" aria-label="emoji">
+                📍
+              </span>
+            </button>
           </div>
           <div className="col-1">
             <CelsiusButton />
@@ -117,7 +134,8 @@ export default function CurrentWeather(props) {
                   Humidity: <span id="humidity">{weatherData.humidity}</span>%
                 </div>
                 <div className="col-6">
-                  Wind: <span id="wind">{weatherData.wind}</span> m/s
+                  Wind: <span id="wind">{Math.round(weatherData.wind)}</span>{" "}
+                  m/s
                 </div>
               </div>
             </div>

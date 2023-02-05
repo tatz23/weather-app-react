@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function LocationButton () {
+    
+
     return(
     <div className="button">
         <button className="current-location" id="current-location">
