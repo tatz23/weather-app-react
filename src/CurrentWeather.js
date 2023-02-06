@@ -13,7 +13,7 @@ export default function CurrentWeather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      coord: response.data.coordinates,
+      coordinates: response.data.coords,
       temperature: response.data.temperature.current,
       feelslike: response.data.temperature.feels_like,
       humidity: response.data.temperature.humidity,
@@ -42,8 +42,8 @@ export default function CurrentWeather(props) {
 
   function searchLocation (position) {
     const apiKey = "2afbc670a6b48bo2065e3872ftab04ec";
-    const latitude = position.coord.latitude;
-    const longitude = position.coord.longitude;
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
     let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
