@@ -24,7 +24,7 @@ export default function CurrentWeather(props) {
       city: response.data.city,
     });
   }
-  
+
   function search() {
     let apiKey = "2afbc670a6b48bo2065e3872ftab04ec";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
@@ -40,7 +40,7 @@ export default function CurrentWeather(props) {
     setCity(event.target.value);
   }
 
-  function searchLocation (position) {
+  function searchLocation(position) {
     const apiKey = "2afbc670a6b48bo2065e3872ftab04ec";
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
@@ -48,7 +48,7 @@ export default function CurrentWeather(props) {
     axios.get(apiUrl).then(handleResponse);
   }
 
-  function getCurrentPosition (event) {
+  function getCurrentPosition(event) {
     event.preventDefault();
     navigator.geolocation.getCurrentPosition(searchLocation);
   }
@@ -69,7 +69,11 @@ export default function CurrentWeather(props) {
             </form>
           </div>
           <div className="col-1 button">
-            <button className="current-location" id="current-location" onClick={getCurrentPosition}>
+            <button
+              className="current-location"
+              id="current-location"
+              onClick={getCurrentPosition}
+            >
               <span role="img" aria-label="emoji">
                 📍
               </span>
