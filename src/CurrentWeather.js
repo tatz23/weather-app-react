@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./CurrentWeather.css";
 import FormattedDate from "./FormattedDate";
 import WeatherTemperature from "./WeatherTemperature";
+import WeatherForecast from "./WeatherForecast";
 
 export default function CurrentWeather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -135,6 +136,8 @@ export default function CurrentWeather(props) {
                 </div>
               </div>
             </div>
+            <hr />
+            <WeatherForecast coordinates={weatherData.coordinates} />  
           </div>
         </div>
       </div>
