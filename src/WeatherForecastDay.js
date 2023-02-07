@@ -11,6 +11,7 @@ export default function WeatherForecastDay (props) {
       return `${temperature}º`;
     }
 
+
     function day () {
         let date = new Date (props.data.time * 1000);
         let day= date.getDay();
@@ -24,8 +25,8 @@ export default function WeatherForecastDay (props) {
         <div className="WeatherForecast-day">{day()}</div>
         <div className="weather-icon">
           <img
-            src="{props.data.condition.icon_url}"
-            alt="{props.data.condition.icon}"
+            src={props.data.condition.icon_url}
+            alt={props.data.condition.icon}
           />
         </div>
         <div className="WheaterForecast-temperatures">
